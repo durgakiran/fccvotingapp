@@ -1,0 +1,113 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
+<!-- pug: https://pugjs.org/ -->
+<!-- haml: http://haml.info/ -->
+<!-- hbs(handlebars): http://handlebarsjs.com/ -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to Poll app</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  
+  </head>
+  <body>
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills float-right">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout"><img src="https://cdn.glitch.com/0dd95d29-25a7-471d-8d7f-2d9adab50b93%2Fgithubsignin.png?1505703394471" style="width: 16px;height: 16px" alt = "github icon" >Logout</a>
+            </li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Poll App</h3>
+      </div>
+
+      <div class="jumbotron">
+        <h1 class="display-3">Welcome to Poll App</h1>
+        <p class="lead">Here you can create polls, vote a poll</p>
+        <p><a class="btn btn-lg btn-success" onclick="newPoll()" role="button">New Poll</a> <a class="btn btn-lg btn-success" onclick="viewMyPolls()" role="button">My Poll</a></p>
+      </div>
+      
+      <!--create new poll-->
+      <form class="formstyle" method="get" action="/create/newpoll" id="newpoll">
+        <div class="form-group">
+        <input type="text" class="form-control" name="question" placeholder="your question"/>
+        </div>
+        <div class="form-group" id="options">
+        <input type="text" class="form-control" name="option" placeholder="poll option"/>
+        
+        <input type="text" class="form-control" name="option" placeholder="poll option"/>
+        </div>
+        <button  class="btn" type="button" onclick="createOption()">
+          Add option
+        </button>
+        <button  class="btn" type="button" onclick="removeOption()">
+          removeOption
+        </button>
+        <button type="submit" class="btn btn-primary">
+          create
+        </button>
+      </form> 
+      
+      <!--show all polls-->
+      <div id="myPolls">
+        
+      </div>
+
+      
+
+      <footer class="footer">
+        <p>&copy; durgakiran 2017</p>
+      </footer>
+
+    </div> 
+    <!-- Your web-app is https, so your scripts need to be too -->
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="/client.js"></script>
+    <script type="application/javascript">
+      
+      function createOption(){
+        
+        var id = document.getElementById('options');
+        var input = document.createElement("input");
+        input.setAttribute('type', 'text');
+        input.setAttribute('name', 'option');
+        input.className = "form-control";
+        input.setAttribute('placeholder', "poll option");
+        
+        id.appendChild(input);
+      }
+      
+      function removeOption(){
+        var id = document.getElementById('options');
+        id.removeChild(id.lastChild);
+        
+      }
+      
+      <!---newpoll--->
+      function newPoll(){
+        document.getElementById('newpoll').style.display = "block";
+        
+      }
+      
+    </script>
+
+  </body>
+</html>

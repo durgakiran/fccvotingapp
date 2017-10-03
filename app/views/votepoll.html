@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to Poll app</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  
+  </head>
+  <body>
+    <div class="container">
+      
+      <!--vote poll form --->
+      <form class="formstyle"  id="updatePoll">
+        <div class="form-group">
+        <span><h4 id="questionAsked"></h4></span>
+        </div>
+        <div class="form-group" id="options">
+        </div>
+        <button type="button" onclick="updatePoll()" class="btn btn-primary">
+          Submit
+        </button>
+      </form>
+      
+      <!--chart js-->
+      <canvas id="mycanvas" width="400" height="400"></canvas>
+
+      
+
+      <footer class="footer">
+        <p>&copy; durgakiran 2017</p>
+      </footer>
+
+    </div> 
+    <!-- Your web-app is https, so your scripts need to be too -->
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="/client.js"></script><!--load client js below chartjs.min.js-->
+    <script type="application/javascript">
+      
+      function createOption(){
+        
+        var id = document.getElementById('options');
+        var input = document.createElement("input");
+        input.setAttribute('type', 'text');
+        input.className = "form-control";
+        input.setAttribute('placeholder', "poll option");
+        
+        id.appendChild(input);
+      }
+      
+      function removeOption(){
+        var id = document.getElementById('options');
+        id.removeChild(id.lastChild);
+        
+      }
+      
+      <!---newpoll--->
+      function newPoll(){
+        document.getElementById('newpoll').style.display = "block";
+        
+      }
+      
+    </script>
+
+  </body>
+</html>
